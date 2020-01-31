@@ -21,7 +21,7 @@ class SoftMaxClassifier ():
         return self.calculate_score(class_index) / sum_of_exp
 
     def calculate_cross_entropy(self,class_index):
-        
+        pass
 
 
         
