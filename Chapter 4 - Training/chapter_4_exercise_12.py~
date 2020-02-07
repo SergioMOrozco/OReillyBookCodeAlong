@@ -7,13 +7,8 @@ import soft_max_scratch
 import numpy as np
 iris = datasets.load_iris()
 
-x = iris["data"]
-y = iris["target"]
-
-##soft_clf = soft_max_scratch.SoftMaxClassifier()
-##soft_clf.train(x,[[1,0,0]])
-##print(soft_clf.predict(x))
-
+data = iris["data"]
+labels = iris["target"]
 
 def convert_to_one_hot(labels):
     class_count = len(set(labels)) 
@@ -23,4 +18,21 @@ def convert_to_one_hot(labels):
         one_hot[i][labels[i]] = 1
 
     return one_hot
-print (convert_to_one_hot(y))
+labels_one_hot = convert_to_one_hot(labels)
+rand = np.random.permutation(len(data))
+
+x,y = data[rand] , labels_one_hot[rand]
+
+soft_clf = soft_max_scratch.SoftMaxClassifier(learning_rate = 0.5, max_iter = 1000, minimum_step_size = 0, early_stopping = True)
+soft_clf.train(x,y)
+
+y_pred = soft_clf.predict(x)
+
+count = 0
+for i in range (len (x)):
+    if np.array_equal(y[i], y_pred[i]):
+        count += 1
+    
+print (count / len(x))
+
+
