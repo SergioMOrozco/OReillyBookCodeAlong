@@ -15,7 +15,7 @@ class SoftMaxClassifier ():
 
         Keyword Arguments:
         learning_rate -- the amount that the weights for Gradient Descent are updated during training. 
-        max_iter -- the max number of iteration that Gradient Descent will perform.
+        max_iter -- the max number of iterations that Gradient Descent will perform.
         minimum_step_size -- the minimum step size that will be allowed during training. Stops training if minimum is reached.
         early_stopping -- flag to determine whether or not to stop training if validation error begins to increase.
         n - Only used for early_stopping. The max number of times that the validation error is allowed to go up sequentially.
@@ -38,7 +38,7 @@ class SoftMaxClassifier ():
 
     """
     Calculates the probability that a given
-    instance x, belongs to a given class k
+    instance x belongs to a given class k
     """
     def __calculate_softmax(self,k,x):
         sum_of_exp = 0
