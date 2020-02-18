@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import accuracy_score 
 
 class SoftMaxClassifier ():
 
@@ -100,7 +100,7 @@ class SoftMaxClassifier ():
         self.__weights = np.random.rand(self.__class_count,X.shape[1])
         self.__exclusion_list = []
         
-        min_rmse = float("inf")
+        max_acc = -1 
 
         n = 0
         for i in range(self.__max_iter):
@@ -121,9 +121,9 @@ class SoftMaxClassifier ():
             """
             if (self.__early_stopping):
                 y_val_pred = self.predict(self.__x_val)
-                rmse = math.sqrt(mean_squared_error(y_val_pred, self.__y_val))
-                if rmse <= min_rmse:
-                    min_rmse = rmse
+                acc = accuracy_score(self.__y_val,y_val_pred)
+                if acc > max_acc:
+                    max_acc = acc 
                     n = 0
                 else:
                     n += 1
