@@ -21,7 +21,6 @@ def convert_to_one_hot(labels):
 
 def main():
     iris = datasets.load_iris()
-
     data = iris["data"]
     labels_one_hot = convert_to_one_hot(iris["target"])
     

@@ -35,7 +35,6 @@ class SoftMaxClassifier ():
     def __calculate_score(self,k,x):
         weight = self.__weights[k]
         return x.dot(weight)
-
     """
     Calculates the probability that a given
     instance x belongs to a given class k
